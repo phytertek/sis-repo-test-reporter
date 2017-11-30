@@ -1,5 +1,5 @@
 {
-  "name": "apier",
+  "name": "repo-test-reporter",
   "version": "0.2.0",
   "description": "declarative api",
   "main": "app/index.js",
@@ -11,11 +11,18 @@
     "start:dev": "nodemon app/index.js",
     "start": "node app/index.js"
   },
-  "keywords": ["api", "node", "express", "mongo", "jwt", "bcrypt"],
-  "author": "phytertek",
+  "keywords": [
+    "api",
+    "node",
+    "express",
+    "mongo",
+    "jwt",
+    "bcrypt"
+  ],
+  "author": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/phytertek/apier"
+    "url": ""
   },
   "license": "MIT",
   "dependencies": {
