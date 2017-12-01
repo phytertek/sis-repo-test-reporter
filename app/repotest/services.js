@@ -25,7 +25,6 @@ const runTest = (test, done) => {
   });
 
   test.status = 'Finished';
-  delete testResults.testResults;
   test.finishMessage = testResults;
   return test;
 };
@@ -33,7 +32,7 @@ const runTest = (test, done) => {
 const clearQueue = async () => {
   clearInterval();
   if (!testQueue.length) {
-    logger.info('Test Queue Clear');
+    logger.info('Test queue clear');
   }
   while (testQueue.length) {
     logger.info('Test Found!');
@@ -55,7 +54,7 @@ const getQueue = async () => {
 };
 
 const runner = async () => {
-  logger.info('Next Test starting');
+  logger.info('Next test poll starting');
   if (!testQueue.length) await getQueue();
   await clearQueue();
 };
