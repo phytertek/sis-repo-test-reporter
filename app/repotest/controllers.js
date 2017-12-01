@@ -2,7 +2,6 @@ const RepoTest = require('../database').RepoTest;
 const { requireFields } = require('../common/validation');
 const { sendUserError } = require('../common/errors');
 const { objectFromExistingFields } = require('../common/utils');
-const { runTest } = require('../services').RepoTest;
 
 module.exports = {
   createRepoTest: async (req, res) => {
