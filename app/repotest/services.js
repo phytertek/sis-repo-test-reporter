@@ -11,17 +11,17 @@ const runTest = test => {
   spawnSync(
     [
       `git clone ${test.repoUrl}.git ${test._id}`,
-      `cd "${test._id}"`,
-      `touch fuckTHisisHard`
-      // 'npm install',
-      // `npm run test:sis`
+      `cd ${cwd}/${test._id}`,
+      `touch fuckTHisisHard`,
+      'npm install',
+      `npm run test:sis`
     ].join(' && '),
     {
       shell: true
     }
   );
   logger.info(`Test ${test._id} started...`);
-  const pathContent = fs.readdirSync(`${cwd}`);
+  const pathContent = fs.readdirSync(`${cwd}/${test._id}`);
   console.log(pathContent);
   const testResults = require(`${cwd}/${test._id}/testRun`);
   spawnSync(`rm -rf ${cwd}/${test._id}`, {
