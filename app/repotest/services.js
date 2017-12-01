@@ -11,7 +11,7 @@ const runTest = test => {
   spawnSync(
     [
       `git clone ${test.repoUrl}.git ${test._id}`,
-      // `cd ${test._id}`,
+      `cd "${test._id}"`,
       `touch fuckTHisisHard`
       // 'npm install',
       // `npm run test:sis`
