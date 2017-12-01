@@ -19,12 +19,12 @@ module.exports = {
       },
       runStart: { type: Date },
       finished: { type: Date },
-      finishMessage: { type: String }
+      finishMessage: { type: Object }
     },
     Hooks: Schema => {
       Schema.pre('save', function(next) {
         const repoTest = this;
-        if (!repoTest.isChanged('status')) next();
+        if (!repoTest.isModified('status')) next();
         switch (repoTest.status) {
           // case 'Queued':
           case 'Running':
@@ -39,6 +39,7 @@ module.exports = {
           default:
             break;
         }
+        next();
       });
     }
   }

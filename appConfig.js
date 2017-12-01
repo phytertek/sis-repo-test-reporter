@@ -1,26 +1,9 @@
 module.exports = {
   // App Components
-  RepoTest: {
-    Schema: true,
-    Routes: true,
-    Services: true
-  },
-  Auth: {
-    Schema: {
-      AuthToken: {
-        data: {
-          type: String,
-          required: true,
-          unique: true
-        }
-      }
-    },
-    Services: 'authenticatedRoute and decodeToken',
-    Routes: {
-      '/auth': {
-        put:
-          '/request - checks provided server auth key for inital handshake, returns success and temp auth token'
-      }
+  Components: {
+    RepoTest: {
+      Schema: true,
+      Services: true
     }
   },
   // App Configuration
