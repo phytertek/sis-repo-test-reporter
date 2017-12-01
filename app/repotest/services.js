@@ -17,9 +17,12 @@ const runTest = test => {
       shell: true
     }
   );
-  spawnSync([`cd ${cwd}/${test._id}`, `yarn test:sis`].join(' && '), {
-    shell: true
-  });
+  spawnSync(
+    [`cd ${cwd}/${test._id}`, `yarn test:sis &> outputOfTest`].join(' && '),
+    {
+      shell: true
+    }
+  );
   logger.info(`Test ${test._id} started...`);
   const pathContent = fs.readdirSync(`${cwd}/${test._id}`);
   console.log(pathContent);
