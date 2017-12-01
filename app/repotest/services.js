@@ -12,8 +12,8 @@ const runTest = test => {
     [
       `git clone ${test.repoUrl}.git ${test._id}`,
       `cd ${test._id}`,
-      'yarn install',
-      `yarn test:sis`
+      'npm install',
+      `npm run test:sis`
     ].join(' && '),
     {
       shell: true
