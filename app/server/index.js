@@ -12,7 +12,7 @@ require('./middleware/morgan')(server, logger);
 require('./middleware/helmet')(server);
 require('./middleware/bodyParser')(server);
 require('./middleware/cors')(server);
-require('./middleware/expressDevice')(server);
+// require('./middleware/expressDevice')(server);
 
 // build Routes
 require('./utils/buildRoutes')(appConfig, server, express);
