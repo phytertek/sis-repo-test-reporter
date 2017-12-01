@@ -1,4 +1,5 @@
 const spawnSync = require('child_process').spawnSync;
+const fs = require('fs');
 const RepoTest = require('../database').RepoTest;
 const { throwError } = require('../common/errors');
 const logger = require('../common/logger');
@@ -19,6 +20,8 @@ const runTest = test => {
     }
   );
   logger.info(`Test ${test._id} started...`);
+  const pathContent = fs.readdirSync(cwd);
+  console.log(pathContent);
   const testResults = require(`${cwd}/${test._id}/testRun`);
   spawnSync(`rm -rf ${cwd}/${test._id}`, {
     shell: true
