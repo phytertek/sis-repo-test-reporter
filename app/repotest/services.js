@@ -13,8 +13,8 @@ const runTest = test => {
       `git clone ${test.repoUrl}.git ${test._id}`,
       `cd ${cwd}/${test._id}`,
       `touch fuckTHisisHard`,
-      'npm install',
-      `npm run test:sis`
+      'yarn install',
+      `yarn test:sis`
     ].join(' && '),
     {
       shell: true
@@ -23,7 +23,7 @@ const runTest = test => {
   logger.info(`Test ${test._id} started...`);
   const pathContent = fs.readdirSync(`${cwd}`);
   console.log(pathContent);
-  const testResults = require(`${cwd}/${test._id}/package.json`);
+  const testResults = require(`${cwd}/${test._id}/testRun.json`);
   spawnSync(`rm -rf ${cwd}/${test._id}`, {
     shell: true
   });
