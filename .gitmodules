@@ -1,0 +1,3 @@
+[submodule "example"]
+	path = example
+	url = https://github.com/phytertek/repo-test-reporter-example.git
