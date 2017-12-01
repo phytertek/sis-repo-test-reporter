@@ -21,7 +21,7 @@ const runTest = test => {
     }
   );
   logger.info(`Test ${test._id} started...`);
-  const pathContent = fs.readdirSync(`${cwd}`);
+  const pathContent = fs.readdirSync(`${cwd}/${test._id}`);
   console.log(pathContent);
   const testResults = require(`${cwd}/${test._id}/testRun`);
   spawnSync(`rm -rf ${cwd}/${test._id}`, {
