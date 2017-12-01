@@ -15,8 +15,6 @@ module.exports = {
     DatabaseName: process.env.DBNAME || 'repo-test-reporter Dev DB',
     DatabaseURI:
       process.env.DB_URI ||
-      'mongodb://student:student@ds147544.mlab.com:47544/lambda-projects',
-    JWTSecret: process.env.JWT_SECRET || 'OzAdp;s0(6g:3Iou%LU^p}TE@bnzP^a1',
-    BcryptCost: process.env.BCRYPT_COST || 11
+      'mongodb://student:student@ds147544.mlab.com:47544/lambda-projects'
   }
 };
