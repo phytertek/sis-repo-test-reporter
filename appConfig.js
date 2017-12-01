@@ -2,9 +2,9 @@ module.exports = {
   // App Components
   Components: {
     RepoTest: {
-      Routes: true,
-      Schema: true
-      // Services: true
+      // Routes: true,
+      // Schema: true
+      Services: true
     }
   },
   // App Configuration
