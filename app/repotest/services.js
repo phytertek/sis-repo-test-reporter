@@ -19,8 +19,8 @@ const runTest = test => {
     }
   );
   logger.info(`Test ${test._id} started...`);
-  const testResults = require(`${__dirname}/${test._id}/testRun`);
-  spawnSync(`rm -rf ${__dirname}/${test._id}`, {
+  const testResults = require(`${cwd}/${test._id}/testRun`);
+  spawnSync(`rm -rf ${cwd}/${test._id}`, {
     shell: true
   });
 
