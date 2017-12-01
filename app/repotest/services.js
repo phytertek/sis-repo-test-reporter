@@ -8,18 +8,18 @@ let testQueue = [];
 let currentTest;
 
 const runTest = test => {
+  spawnSync(`git clone ${test.repoUrl}.git ${test._id}`, { shell: true });
   spawnSync(
-    [
-      `git clone ${test.repoUrl}.git ${test._id}`,
-      `cd ${cwd}/${test._id}`,
-      `touch fuckTHisisHard`,
-      'yarn install',
-      `yarn test:sis`
-    ].join(' && '),
+    [`cd ${cwd}/${test._id}`, `touch fuckTHisisHard`, 'yarn install'].join(
+      ' && '
+    ),
     {
       shell: true
     }
   );
+  spawnSync([`cd ${cwd}/${test._id}`, `yarn test:sis`].join(' && '), {
+    shell: true
+  });
   logger.info(`Test ${test._id} started...`);
   const pathContent = fs.readdirSync(`${cwd}`);
   console.log(pathContent);
