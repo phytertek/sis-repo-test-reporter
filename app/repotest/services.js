@@ -6,7 +6,7 @@ const cwd = process.cwd();
 let testQueue = [];
 let currentTest;
 
-const runTest = (test, done) => {
+const runTest = test => {
   spawnSync(
     [
       `git clone ${test.repoUrl}.git ${test._id}`,
@@ -18,7 +18,7 @@ const runTest = (test, done) => {
       shell: true
     }
   );
-  console.log(cwd);
+  logger.info(`Test ${test._id} started...`);
   const testResults = require(`${cwd}/${test._id}/testRun`);
   spawnSync(`rm -rf ${cwd}/${test._id}`, {
     shell: true
@@ -30,18 +30,22 @@ const runTest = (test, done) => {
 };
 
 const clearQueue = async () => {
-  clearInterval();
-  if (!testQueue.length) {
-    logger.info('Test queue clear');
-  }
-  while (testQueue.length) {
-    logger.info('Test Found!');
-    currentTest = testQueue.shift();
-    logger.info(`Running test ${currentTest._id}...`);
-    currentTest.status = 'Running';
-    await currentTest.save();
-    currentTest = runTest(currentTest);
-    await currentTest.save();
+  try {
+    clearInterval();
+    if (!testQueue.length) {
+      logger.info('Test queue clear');
+    }
+    while (testQueue.length) {
+      logger.info('Test Found!');
+      currentTest = testQueue.shift();
+      logger.info(`Running test ${currentTest._id}...`);
+      currentTest.status = 'Running';
+      await currentTest.save();
+      currentTest = runTest(currentTest);
+      await currentTest.save();
+    }
+  } catch (error) {
+    throwError(error);
   }
 };
 
@@ -57,10 +61,6 @@ const runner = async () => {
   logger.info('Next test poll starting');
   if (!testQueue.length) await getQueue();
   await clearQueue();
-};
-module.exports = {
-  testQueue,
-  currentTest
 };
 
 // Queue Runner Startup
